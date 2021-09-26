@@ -36,4 +36,17 @@ public class Usuario {
      * Fecha de nacimiento del usuario
      */
     private String fechaNacimiento;
+
+    /**
+     *
+     * @param nombre Nombre del usuario
+     * @param apellido Apellido del usuario
+     * @param correo Correo electronico del usuario
+     */
+    public Usuario(String nombre, String apellido, String correo, String contrasena){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.contrasena = contrasena;
+    }
 }
