@@ -35,9 +35,9 @@ public class CrudUsuarios {
             if (!file.exists()) {
                 file.createNewFile();
             }
-            FileWriter fileWriterw = new FileWriter(file);
-            BufferedWriter BufferedWriter = new BufferedWriter(fileWriterw);
-            BufferedWriter.write(contenido);
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter BufferedWriter = new BufferedWriter(fileWriter);
+            BufferedWriter.write(contenido + "\n");
             BufferedWriter.close();
 
             return "[EXITOSO] El usuario ha sido creado y guardado correctamente";
