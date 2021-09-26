@@ -2,6 +2,9 @@ package CRUD;
 
 import objetos.Usuario;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class CrudUsuarios {
@@ -13,10 +16,34 @@ public class CrudUsuarios {
         return "";
     }
 
-    public String crearUsuario(String nombre, String apellido, String correo, String contrasena) {
+    public String crearUsuario(Usuario usuario) {
 
+        String nombre = usuario.getNombre();
+        String apellido = usuario.getApellido();
+        String correo = usuario.getCorreo();
+        String contrasena = usuario.getContrasena();
 
-        return "";
+        try {
+            String ruta = "../database/usuarios.txt";
+            String contenido = nombre + ":" +
+                    apellido + ":" +
+                    correo + ":" +
+                    contrasena;
+
+            File file = new File(ruta);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fileWriterw = new FileWriter(file);
+            BufferedWriter BufferedWriter = new BufferedWriter(fileWriterw);
+            BufferedWriter.write(contenido);
+            BufferedWriter.close();
+
+            return "[EXITOSO] El usuario ha sido creado y guardado correctamente";
+        } catch (Exception e) {
+            return "[ERROR] El usuario no pudo ser creado o guardado : " + e.getMessage();
+        }
     }
 
     public Usuario obtenerUsuario(int usuarioID) {
